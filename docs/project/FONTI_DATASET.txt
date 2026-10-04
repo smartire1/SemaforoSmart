@@ -1,0 +1,156 @@
+REGISTRO FONTI DATASET — SEMAFOROSMART
+
+Registro cronologico delle provenienze. I dettagli visivi delle singole immagini
+sono in METADATA_CLASSI.md.
+
+Stati: USED = incluso nel dataset; RESERVE = conservato ma escluso;
+REJECTED = scartato; SOURCE_UNKNOWN = fonte non recuperabile.
+
+======================================================================
+V1.1 — RACCOLTA 13-09-2026 — COMPLETATA
+======================================================================
+
+Formato nomi: v11_<classe>_video_<fonte>_frame_<frame>.
+Il numero della fonte corrisponde all'ordine delle righe nelle tabelle.
+Materiale verificato come nuovo rispetto alla v1.
+
+VDF
+ID | FONTE | CONTESTO | STATO
+01 | https://www.youtube.com/watch?v=l6V-NcbVrHI | NIGHT, STREET, CLEAR | USED
+02 | https://www.youtube.com/watch?v=e5Y_dq7l5Rc | DAY, STREET, CLEAR | USED
+03 | https://www.youtube.com/watch?v=YL_q9T8P43Y | DAY, STREET, CLEAR | USED
+
+AMBULANZA
+ID | FONTE | CONTESTO | STATO
+01 | https://www.youtube.com/watch?v=s8f3fm5soi4 | NIGHT, STREET, CLEAR | USED
+02 | https://youtube.com/shorts/LATPtOxXWAc?si=k2lohulJ_kOezPMX | NIGHT, STREET, CLEAR | USED
+03 | https://www.youtube.com/watch?v=XTqBilp4ifo | NIGHT, STREET, CLEAR | USED
+04 | https://www.youtube.com/watch?v=Xa6LtYIIZRU | NIGHT, ELEVATED/TOP_DOWN, CLEAR | USED
+05 | https://www.youtube.com/watch?v=8hjj3TB062I | NIGHT, STREET, CLEAR | USED
+06 | https://www.youtube.com/watch?v=w94qJde2luE | DAY, TOP_DOWN, CLEAR | USED
+07 | https://www.youtube.com/watch?v=WTTC0JGWwpM | DAY, STREET, CLEAR | USED
+08 | https://www.youtube.com/watch?v=wft8deZbzZw | DAY, STREET, CLEAR | USED
+
+CARABINIERI
+ID | FONTE | CONTESTO | STATO
+01 | https://www.youtube.com/watch?v=H8oJaGpk_UI | DAY, TOP_DOWN, CLEAR | USED
+02 | https://www.youtube.com/watch?v=qev3H2e4Ycw | DAY, STREET, CLEAR | USED
+03 | https://www.youtube.com/watch?v=PW9NbB4EYDE | DAY, STREET, CLEAR | USED
+04 | https://youtube.com/shorts/-uyE7oPsBAI?si=5-ZTJzm0rDClt_9t | NIGHT, STREET, CLEAR | USED
+05 | https://www.youtube.com/watch?v=pX9CMx0mKTM | NIGHT, ELEVATED, CLEAR | USED
+06 | https://www.youtube.com/shorts/I4kmovaFJik | NIGHT, STREET, CLEAR | USED
+07 | https://www.youtube.com/watch?v=XRO4moH0yhQ | NIGHT, LOW/STREET, CLEAR | USED
+08 | https://www.youtube.com/watch?v=IWR0wjboFbQ | NIGHT, STREET, CLEAR | USED
+09 | https://www.youtube.com/watch?v=ZzgQuXCBLFc | NIGHT, STREET, CLEAR | USED
+10 | https://www.youtube.com/shorts/fUtSPF5KTy8 | NIGHT, STREET, CLEAR | USED
+11 | https://www.youtube.com/watch?v=1f3ITaB6EZ8 | NIGHT, STREET, CLEAR | USED
+12 | https://www.youtube.com/watch?v=0wsauNLYRLQ | DAY, STREET, CLEAR | USED
+
+NOTE ED ECCEZIONI V1.1
+- Carabinieri: fonte 07 = 3 frame; 09 = 2; 10 = 1; 11 = 4.
+- v11_car_source_unknown_video_001_frame_001/002: SOURCE_UNKNOWN; stessa auto,
+  due momenti, da mantenere nello stesso gruppo nello split.
+- v11_null_*: 12 negativi con provenienza non documentata; USED.
+- v11_car_video_009_frame_001: REJECTED dopo review; resta soltanto nel raw.
+- car_old_video_001_frame_001: recupero storico Portrait, USED nella v1.1.
+- car_old_video_003_frame_005: REJECTED ed eliminato dal progetto Roboflow.
+
+======================================================================
+V1.2 — RACCOLTA SUCCESSIVA — COMPLETATA
+======================================================================
+
+69 immagini aggiunte: 22 Ambulanza, 10 Carabinieri, 18 VDF,
+1 multiclasse e 18 NULL. Split: 61 train, 8 validation, 0 test.
+
+RECUPERO STORICO — AMBULANZA
+Fonte: primissimo dataset SemaforoSmart OLD; URL originali non disponibili.
+- v12_amb_old_recovery_002 ... 011, 013, 014: 12 immagini USED.
+  Prevalenza DAY/CLEAR/CLOSE; valore principale in partial, occlusioni e scene
+  multiveicolo. Gli ID 008 e 011 sono NIGHT MID/MID-FAR.
+- v12_amb_old_recovery_001 e 012: RESERVE.
+
+COMPILATION MULTICLASSE
+ID | FONTE | FILE ESTRATTI | STATO
+01 | https://www.youtube.com/watch?v=9uo_1a6M_X0 | Ambulanza clip 001 frame 001-004; Ambulanza clip 002 frame 001-002; VDF clip 001 frame 001-003 | USED
+02 | https://www.youtube.com/watch?v=dLMMlRIyHyE | Ambulanza clip 001 frame 001-004; Carabinieri frame 001-003; VDF clip 001 frame 001-005; VDF clip 002 frame 001-003 | USED
+
+CARABINIERI — FONTI DIRETTE
+ID | FONTE | FILE | STATO
+01 | https://www.youtube.com/watch?v=3bYFcBxpzx0 | v12_car_video_001_frame_001-002 | USED
+02 | https://youtube.com/shorts/pfBm6mAJLIU?si=gF8Ki3VnNT-w3xYV | v12_car_video_002_frame_001-002 | USED
+03 | https://youtube.com/shorts/TQg8-uPod8k?si=hZoCW19IHKQv9nZA | v12_car_video_003_frame_001-002 | USED
+04 | https://youtube.com/shorts/JR4lBjfmCYg?si=NPCz4R7j2zAsLSqU | v12_car_video_004_frame_001 | USED
+
+VDF — FONTI DIRETTE
+ID | FONTE | FILE | STATO
+01 | https://www.youtube.com/watch?v=AHV5_5dRpqI | v12_vdf_video_001_frame_001-002 | USED
+02 | https://www.youtube.com/watch?v=FrODwI-H0YM | v12_vdf_video_002_frame_001-002 | USED
+03 | https://youtube.com/shorts/F5v2Ibws2ME?si=rnaZwbVyVn-2nJuV | v12_vdf_video_003_frame_001-002 | USED
+04 | https://www.youtube.com/shorts/6Y4s1UgNltg | v12_vdf_video_004_frame_001 | USED
+
+MULTICLASSE — FONTE SCONOSCIUTA
+- v12_multiclass_source_unknown_001.png: SOURCE_UNKNOWN; multiveicolo,
+  multiclasse; USED.
+
+HARD NEGATIVE — ROMA CENTRO
+- Parte 1: https://www.youtube.com/watch?v=9uo_1a6M_X0
+- Parte 2: https://www.youtube.com/watch?v=dLMMlRIyHyE
+- File: v12_null_roma_centro_part_001_frame_001-009 e
+  v12_null_roma_centro_part_002_frame_001-009.
+- Totale: 18 NULL USED; DAY/NIGHT, STREET, traffico eterogeneo con auto,
+  furgoni, pullman e camion rossi.
+Le due parti mostrano la stessa zona e costituiscono un'unica fonte logica.
+L'associazione 9+9 e' stata assegnata casualmente con seed 42 perche' i file non
+conservavano la provenienza puntuale. Tutti i relativi positivi e NULL sono stati
+mantenuti nello stesso gruppo nello split.
+
+======================================================================
+V1.3 — RACCOLTA RAW COMPLETATA — ANNOTAZIONE DA ESEGUIRE
+======================================================================
+
+Convenzione file: v13_<classe>_video_<fonte>_frame_<frame>.png.
+La numerazione delle fonti riparte da 001 per ogni classe. I dettagli per
+immagine (distanza, vista, occlusione, sirene, ecc.) saranno consolidati in
+METADATA_CLASSI.md dopo la revisione.
+
+CARABINIERI — FONTI DIRETTE
+ID | FONTE | FILE | PROFILO SINTETICO | STATO
+01 | https://www.youtube.com/watch?v=3Jo79T5GdsE | v13_car_video_001_frame_001-004 | DAY, CLEAR, FRONT, ELEVATED, semaforo | USED
+02 | https://www.youtube.com/watch?v=-I97W8zT2ro | v13_car_video_002_frame_001-005 | NIGHT, CLEAR, ON, STREET, sinistra-destra | USED
+03 | https://www.youtube.com/watch?v=XLSbwxhvBeA | v13_car_video_003_frame_001 | NIGHT, CLEAR, ON, SIDE, STREET, OCCLUDED | USED
+04 | https://www.youtube.com/watch?v=FMxN1bzQE2Q | v13_car_video_004_frame_001-004 | NIGHT, CLEAR, ON, incrocio, scorta Ambulanza | REVIEW
+05 | https://www.youtube.com/watch?v=e29sl24SDxI | v13_car_video_005_frame_001-005 | NIGHT, CLEAR, ON, ELEVATED, FAR/OCCLUDED | USED
+06 | https://www.youtube.com/shorts/PUT4HyGCV_k | v13_car_video_006_frame_001-002 | NIGHT, CLEAR, ON, FRONT, STREET | USED
+Nota fonte 04: frame 001 e 004 mostrano soltanto l'Ambulanza e non devono essere
+annotati come Carabinieri. Frame 002-003 mostrano il contesto Carabinieri.
+Valutare se spostare i frame 001/004 nel batch Ambulanza oppure escluderli.
+
+VDF — FONTI DIRETTE
+ID | FONTE | FILE | PROFILO SINTETICO | STATO
+01 | https://www.youtube.com/watch?v=rSwNKxmXp-g | v13_vdf_video_001_frame_001-004 | NIGHT, CLEAR, ON, STREET, front/side, piu' mezzi | USED
+02 | https://www.youtube.com/shorts/urEYtXgT-SU | v13_vdf_video_002_frame_001-004 | NIGHT, CLEAR, ON, STREET, incrocio front-sinistra | USED
+03 | https://www.youtube.com/watch?v=4QpbCTQlDMY | v13_vdf_video_003_frame_001-008 | clip 1: frame 001-002; clip 2: frame 003-006; clip 3: frame 007-008 | USED
+04 | https://www.youtube.com/watch?v=kDBu4J8Z96c | v13_vdf_video_004_frame_001-003 | NIGHT, CLEAR, ON, STREET, compilation | USED
+Nota fonte 03: le tre clip sono scenari distinti ma provengono dallo stesso URL.
+I frame 007-008 sono DAY perche' mostrano un pickup; confermare le condizioni
+definitive nel metadata.
+
+AMBULANZA — FONTI DIRETTE
+ID | FONTE | FILE | PROFILO SINTETICO | STATO
+01 | https://www.youtube.com/shorts/GyRz5bU6NRU | v13_amb_video_001_frame_001-002 | DAY, CLEAR, ON, STREET, FRONT/REAR | USED
+02 | https://www.youtube.com/watch?v=XSbB-5sZHUU | v13_amb_video_002_frame_001-002 | DAY, CLEAR, ON, STREET, SIDE/REAR, OCCLUDED | USED
+03 | https://www.youtube.com/shorts/V0K4qOxcH3s | v13_amb_video_003_frame_001 | DAY, CLEAR, ON, STREET, OCCLUDED | USED
+04 | https://www.youtube.com/watch?v=TSdiIXFTx9E | v13_amb_video_004_frame_001-004 | DAY, CLEAR, ON, STREET, OCCLUDED | USED
+05 | https://www.youtube.com/watch?v=-Pb_csMLYj8 | v13_amb_video_005_frame_001-004 | clip 1: frame 001-002; clip 2: frame 003-004; DAY, CLEAR, ON, STREET, OCCLUDED | USED
+
+NULL / HARD NEGATIVE
+- 26 immagini: v13_null_hn_001.png ... v13_null_hn_026.png.
+- Provenienza puntuale: SOURCE_UNKNOWN; nessun URL associato.
+- Raccolta omogenea di hard negative, con circa 8 esempi per ciascun gruppo
+  logico (auto nere/grigie, bus/camion rossi, furgoni bianchi) e condizioni
+  DAY/NIGHT, come verificato dall'utente.
+- Tutti i file sono candidati USED; non contengono bounding box.
+
+RIEPILOGO V1.3 RAW
+Ambulanza: 13 | Carabinieri: 21 | VDF: 19 | NULL: 26 | Totale: 79.
+Prima dell'upload vanno completati controllo qualitativo, metadata e annotazioni.

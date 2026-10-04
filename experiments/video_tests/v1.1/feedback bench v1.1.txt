@@ -1,0 +1,42 @@
+"
+verdetto:
+
+la conf da terminale minima è stata di 0.60
+
+amb giorno -> il video presenta molte passate
+
+- destra -> sinistra: come anticipato miglioramento significativo, il modello riconosce correttamente l'ambulanza da una buona distanza mantenendo un buon rapporto frame/predizione (quasi ogni frame correttamente predetto). ho notato ampia difficoltà in situazioni occlused, quindi quando un'auto nell'altro senso di marcia passa davanti la camera ostruendo l'ambulanza la predizione cessa completamente fino al passaggio completo. Stessa situazione a fine passaggio quando molte auto ostruiscono la visuale completa, lasciando visibile solo metà superiore ambulanza (non predetta). Piccole confusioni di qualche frame con VDF ma per essere v1.1 niente male.
+
+- sinistra -> destra: ottimo rapporto frame/predizione, migliore rispetto a destra sinistra, molto fluido e stabile. interessante il passaggio dietro un BUS, mentre ambulanza spariva dietro il bus, quindi la parte destra dell'ambulanza spariva frame per frame dietro il bus anche il box si rimpiccioliva prendendo correttamente solo il lato sx di ambulanza.
+Interessante anche il miglioramento primo piano sia direzione destra che sinistra, nel video il primo piano l'ambulanza è partial, anche qui viene predetta in maniera sorprendente rispetto alle fonti date, qualche secondo di non predizione nel passaggio side partial ma erano frame difficili e comprendo.
+
+- contesto circostante, ancora alcune incertezze su auto normali confuse con carabinieri (auto scure), migliorata decisamente la confusione con oggetti (stazione servizio e fermata bus non piu confuse con VDF). situazioni ambigue confuse (ambulanza vista rear con di fianco praticamente attaccato un furgone bianco), il blocco ambulanza e furgone viene confuso come uno mezzo ambulanza (effettivamente se si guarda il frame con superficialità rischia di confondere seriamente anche un umano).
+- nel complesso passi da gigante su questo bench.
+
+ambu notte:
+- solo passaggio destra -> sinistra, video sgranato e risoluzione bassa ma miglioramenti rispetto a v1. Il mezzo non viene riconosciuto da lontano (parte occlused), viene riconosciuto solo a limite di distanza far e completamente visibile ma viene confuso con VDF con alta conf.
+solo al passaggio dopo la vista side viene correttamente predetto come ambulanza con saltuarie confusioni con vdf rare.
+- contesto circostante, migliorate, solo qualche insignificante confusione con carabinieri per qualche frame.
+- nel complesso notte migliorata molto, ha bisogno di qualche esempio in piu notturno per togliere definitivamente la confusione vdf ambulanza.
+
+carab giorno:
+- passaggio destra -> sinistra, bel rapporto frame/predizione, piccoli frangenti in cui un 20% dell'auto era occlused correttamente predetti, al passaggio side buone predizione corrette e fluide (anche se qui l'auto era completamente visibile rispetto a ambu che era partial).
+- contesto circostante, da migliorare siccome molta confusione su un auto in particolare, nera confusa con carabinieri. Un'altra auto vista partial primo piano rear confusa con vdf (com'è possibile ahah). interessante che l'auto nera confusa ad un certo punto ha vista partial (solo metà di sinistra e viene ancora confusa con carab). questo mi fa pensare che tolti i dubbi aggiungendo alcuni esempi null anche la vista partial non è male.
+- nel complesso gran salto di qualità anche qui
+
+carab notte:
+- sinistra -> destra, come accennato sorprendente il miglioramento, anche se il bench non è migliore di altri credo sia il miglioramento piu alto dei 6 rispetto a v1. il video parte con auto proveniente da molto lontano, occlused da rami e foglie (nessuna predizione), solo a distanza mid inizia la predizione corretta con veicolo completamente visibile. leggermente incerto il rapporto frame/predizione rispetto ad altri veicoli/contesti ma comunque molto considerevole rispetto a v1. non male il passaggio side, perde qualche frame in side partial ma subito riprende quando la telecamera punta l'auto. all'allontanarsi inizia qualche dubbio con ambulanza saltuario.
+- contesto circostante, ancora piccole incertezze in frame isolati con carabinieri su altre auto ma grosso miglioramento rispetto a v1.
+- nel complesso, approvato questo bench ma ancora c'è da lavorare
+
+vdf giorno:
+- destra -> sinistra, qui plot twist e leggero peggioramento… rapporto/predizione sostanzialmente identico ma leggermente incerto rispetto a v1. Il pick-up vdf avanti al camion vdf non viene subito riconosciuto come v1 ma in un successivo momento all'avvicinarsi.
+- contesto circostante, qui migliorata, la confusione non è come v1 non presenta frame di predizioni sbagliate isolate se non per il solito bus rosso a fine video (ho scoperto che sono 2 mezzi rossi in fila a fine video, in v1 entrambi vengono confusi mentre in v1.1 solo quello piu vicino alla camera)
+
+vdf notte
+- destra -> sinistra: almeno la parte iniziale sembra identica (confusione con ambulanza e box parziale del veicolo), ma qui ad ogni frame il box si allarga e si restringe (il problema era bounding solo sulla parte anteriore) qui sembra come sforzarsi ad allargarlo frame dopo frame per poi tornare piccolo (tutto in una frazione di pochi frame tutto ripetuto). verso fine video da side fino ad allontanarsi (distanza mid) correttamente predetto e bel rapporto frame/predizione per una frazione di secondi fino a fine video. giusto un frame confuso con ambulanza.
+
+note mie:
+soddisfatto del sostanziale miglioramento mirato, adesso è molto chiara la direzione continuando di questo passo ci vuole tempo ma il fine giustifica i mezzi
+
+"

@@ -1,0 +1,5 @@
+outs:
+- md5: 1042e4608ab55c21c18c1be58f6ed3dd
+  size: 7530376
+  hash: md5
+  path: benchmark_vdf_giorno.mp4

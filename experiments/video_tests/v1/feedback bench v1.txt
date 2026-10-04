@@ -1,0 +1,55 @@
+"
+
+verdetto:
+Premetto che i bench usati sono tutti view street siccome la mia fonte principale è yt (persone che registrano il passaggio di mezzi, motivo per il quale la view STREET domina nel dataset, trovare altre viste in una sufficiente quantità e di qualità è molto complesso)
+
+la conf da terminale minima è stata di 0.60
+
+amb giorno -> il video presenta molte passate
+
+- destra -> sinistra: Da migliorare molto, il modello non è sicurissimo molti frame perde il boundary e la conf non sale quasi mai sopra gli 0.85, i frame occluded perde completamente, non vede nessuna classe quando un ostacolo copre parzialmente ambulanza.
+- sinistra -> destra: niente male subito riconosce l'ambulanza e la conf è molto stabile rispetto all'altra passata, quasi sempre sopra i 0.90 e i boundary sono predenti quasi in tutti i frame. Nel momento iun cui passa davanti la telecamera ed inizia a vedersi il retro il modello inizia a confondere con vdf, ad un certo punto ho visto un alternarsi frame by frame vdf e ambulanza.
+- contesto circostante abbastanza confuso, il modello confonde molto oggetti e auto per classi di veicoli di emergenza
+- nel complesso anche se nulla è cambiato, molto meglio del primo predict.
+
+amb notte:
+
+- solo passaggio destra -> sinistra, da lontano nulla nonostante le sirene, devo dire che parte molto occluded il mezzo, poi si avvicina e si vede perfettamente ed il modello lo confonde con vdf per quasi tutto il passaggio, solo verso fine video un po dal retro inizia ad alternare, alcuni frame vdf alcuni amb.
+- contesto circostante anche qui abbastanza confuso, un auto in particolare, bianca, viene confusa con carab(com'è possibile bianca?)
+- nel complesso la notte ancora non ci siamo con amb, anche se solo con questo video non si possono trarre conclusioni certe.
+
+carab giorno:
+
+- passaggio solo destra -> sinistra, anche qui parte molto molto occluded ma appena arriva visibile viene chiaramente riconosciuta la classe con un'ottima conf che stava sui 0.90 per quasi tutto il tempo
+- contesto circostante, qui molte auto vengono confuse proprio con carab, vi sono molte auto scure che vengono confuse, il pro è che solo alcuni frame vengono confusi e la conf rimane sui 0.70 (questo quando si inizia a vedere il retro della macchina carab nel video), inoltre sempre in quel momento il contesto è abbastanza pieno di auto e li inizia la confusione, anche sulla classe stessa
+- nel complesso mi aspettavo peggio da carabinieri giorno
+
+carab notte:
+
+- sinistra-> destra, praticamente fino al primo piano vista side nessun rilevamento sulla macchina, un po di confusione su qualche auto che passava (grigia confusa come carabinieri), alla vista side inizia a mostrare qualcosa sui 0.70 saltuariamente
+- da dietro alternava frame in cui rileva e frame che non rileva conf abbastanza bassa 0.70 - 0.80
+- la particolarità che ho notato è che ad ogni rilevamento cambiava la forma del boundary
+- verso fine video ad auto abbastanza lontana veniva confusa con ambulanza
+- in conclusione, penso sia stato il peggior bench tra i 6
+
+vdf giorno:
+
+- destra -> sinistra: fantastico, praticamente il boundary non spariva mai, il video selezionato mostra un camion e un pickup vdf siccome solitamente viaggiano insieme ed era fantastico conf quasi che raramente scendeva sotto 0.9
+- contesto circostante, solita confusione su qualche oggetto o auto, ha confuso un bus rosso, con una conf anche abbastanza alta.
+- non male anche la parte occluded in quanto presente dove ho visto che il modello cercava di inquadrare il cambion dietro un altro bus in passaggio.
+- in conclusione per vdf giorno siamo proprio sulla strada giusta.
+
+vdf notte
+
+- destra -> sinistra, qui il video è particolare ripreso da un auto in lento movimento in una rotatoria quindi contesto molto difficile.
+- appena la sagoma diventa visibile solo la parte anteriore del camion viene evidenziata e confusa con ambulanza, la parte dietro del camion non viene quasi selezionata dal boundary
+- durante il passaggio è iniziato l'alternarsi della confusione, ambulanza vdf con conf che non è mai arrivata a 0.8.
+- in conclusione pensavo peggio dato il video ma da rivedere questa confusione che avviene anche in ambulanza.
+
+note mie:
+
+- a primo impatto mi viene da dire che la notte sicuramente per tutte le classi è da migliorare.
+- la confusione tra amb e vdf è reciproca c'è bisogno di aumentare il numero di esempi per tutti in generale questo è certo.
+- ho qualche timore sulla direzione, non vorrei diventare eccellente in video ripresi col telefono per strada per poi testare su una telecamera ferma e fallire. Sinceramente non so a pieno gli algoritmi dietro ma non vorrei che diventando forte su queste fonti poi fermando la cam c'è da rifare tutto il lavoro.
+
+"

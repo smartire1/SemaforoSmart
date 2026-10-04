@@ -1,0 +1,66 @@
+"
+verdetto:
+
+la conf da terminale minima è stata di 0.60
+
+amb giorno -> 
+
+- destra -> sinistra: 
+Ancora qualche incertezza da lontano, non brillantissimo il rapporto frame/predizione. Problemi ancora evidenti in zone occlused (sia verticali che orizzontali). Presente ancora qualche predizione dei frame con ambulanza attaccata a furgone bianco
+
+- sinistra -> destra: 
+Anche qui da molto lontano un po di fatica, buono il rapporto frame/predizione. Sostanzialmente simile a v1.1 per quanto riguarda ambulanza sinistra destra
+
+- contesto circostante, buono il miglioramento sui falsi positivi, con conf a 0.6, solo piccole confusioni sparse in qualche frame molto di rado
+
+- nel complesso, miglioramento riuscito sui FP, ancora da lavorare occlused. conf per tutte le passate che rimane oltre 0.9 per mid/close, un po ballerina far.
+
+
+ambu notte:
+- destra -> sinistra,
+netto il miglioramento sulla confusione nella prima parte del video in cui si avvicina. in v1.1 inizialmente l'ambulanza viene scambiata per vdf fino al passaggio side, adesso piccole confusioni ma subito corregge la predizione. Non sicurissimo perde qualche frame ma decisamente mglio. Conf. che non rimane stabilissima oscilla sempre tra tutto il range dato.
+
+- contesto circostante, migliorati anche i FP, nulle in questo bench in particolare riguardante confusioni di veicoli/oggetti
+- nel complesso, sembra che questa versione abbia ben migliorato un obiettivo del dataset stesso v1.2 (FP)
+
+-o-o-o-o-o
+
+carab giorno:
+- passaggio destra -> sinistra, 
+sostanzialmente uguale a v1.1 ho confrontato i 2 video e non è malvagio nel complesso. molto occlused non la vede poi inizia l'inquadratura e comincia un buon rapporto frame/predizione, buona la conf quasi tutto il passaggio. nella seconda metà quando inizia la confusione con l'auto nera si abbassa un po fino a sparire quando parte l'occlused. 0.6 - 0.8.
+
+- contesto circostante, non brillante il miglioramento ma comunque presente. le confusioni non sono sparite del tutto ma sicuramente migliorate, ancora incertezza su quell'auto nera che, vero migliorata ma non del tutto.
+
+- nel complesso, anche qui bene FP meno occlused
+
+
+carab notte:
+- sinistra -> destra, 
+purtroppo qui peggiore, dietro i rami (ma comunque visibile) ancora nessuna predizione come in v1.1, dopo per un po di secondi buona conf e rapporto frame/predizione, all'allontanarsi box indecisi forma diversa quasi ad ogni frame, conf. ballerina (dati presenti anche in v1.1 ma meno visibili), all'allontanarsi confusione con amb e vdf qualche frame perso.
+
+- contesto circostante, qui confuzione con FP sostanzialmente identica, ha avuto le stesse confusioni presenti in v1.1, fatta eccezione per qualche frame non confuso in v1.2
+- nel complesso, miglioramento millimetrico per FP ma peggioramento nella stabilità del box nel tempo e confusione con vdf che in v1.1 non era presente a fine video 
+
+-o-o-o-o-o-o
+
+vdf giorno:
+- destra -> sinistra, 
+parto subito con il pickup, è tornato in pista bene cosi, conf. buona, rapporto fram/predizione ok. Non è perfetto ma siamo sulla strada giusta qui.
+
+- contesto circostante, millimetrico miglioramento sui FP, qualche frame in meno predetto circostante e soprattutto su quel pullman rosso, ancora presente ma guardando molto attentamente si nota un piccolo miglioramento
+
+- nel complesso, ci siamo qui è chiaro cosa bisogna fare
+
+
+vdf notte
+- destra -> sinistra: 
+sostanzialmente uguale a v1.1, ma aumentata la confusione, adesso scambiato anche con carabinieri…, parte finale praticamente invariata
+
+- contesto, qui nessun auto o oggetto particolare con pattern riconducibile a mezzi di soccorso
+
+nel complesso, devo cambiare bench, questo è terribile, ma interessante perché molto difficile
+-o-o-o-o-o-o
+
+note mie:
+FP migliorata con poche anzi pochissime immagini NULL, mi aspettavo meglio occlused siccome ho visto poco se non 0 miglioramenti
+"

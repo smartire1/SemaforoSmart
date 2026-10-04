@@ -1,0 +1,71 @@
+"
+verdetto:
+
+la conf da terminale minima è stata di 0.60
+
+amb giorno -> 
+
+- destra -> sinistra: 
+Obiettivo miglioramento mirato raggiunto, subito paragonando con la versione precedente si notano le predizioni in zone occlused, non è ancora brillante ma è comunque un passo importante. in zone molto occlused fa moltissima fatica, ma li devo pensare a se conviene colmare o no
+
+- sinistra -> destra:
+anche qui si nota molto il miglioramento in occlused, sostanzialmente questo bench non ha moltissimi problemi di predizione sul mezzo. Un po da migliorare sarebbe la distanza ma qui c'è da capire quanta tolleranza c'è o meglio fin dove è necessario che il modello inizi le predizioni.
+
+- contesto circostante, Aggiunto qualche FP. ad un certo punto del passaggio DX -> SX passa un auto rossa in primo piano partial (praticamente vicinissima) e la scambia con vdf, lo faceva gia con la v1 poi risolto con v1.1, credo di sapere chi è il responsabile. Probabilmente si tratta del pickup rosso inserito in v1.3
+
+- nel complesso, benefici maggiori dei punti negativi. Per i pickup rossi sicuramente c'è da lavorare ma non voglio centrare il focus li siccome è solo 1 tipo di mezzo "secondario" dei tantissimi vdf, sicuramente è un lavoro da fare ma in fase di rifinitura più avanti
+
+
+ambu notte:
+- destra -> sinistra,
+tornata un po di confusione iniziale con vdf, migliorata la predizione da lunga distanza, non brillante ma comunque inizia a predire qualcosa. Ottima la seconda metà del video in cui passa davanti la camera e va verso SX
+
+- contesto circostante, buono oltre la confusione col mezzo in se con VDF, 0 FP predetti
+
+- nel complesso, video non facilissimo ma a piccoli step i progressi sono buoni.
+
+-o-o-o-o-o
+
+carab giorno:
+- passaggio destra -> sinistra,
+non ho avuto bisogno di riguardare v1.2, rapporto frame/predizione ottimo, migliorie leggere su occluded. questo bench si avvicina alla perfezione
+
+- contesto circostante, 4 frame esatti di FP sempre su quella benedetta macchina nera, il resto perfetto.
+
+- nel complesso, niente male carabinieri giorno siamo nella direzione giusta
+
+
+carab notte:
+- sinistra -> destra, 
+sicuramente migliorata IoU, rispetto a v1.2 il modello tende a predire box omogenei frame per frame, ancora un po di confusione nella parte finale con vdf e ambulanza, nel complesso il miglioramento è evidente. voglio spezzare una lancia a sfavore del video. Nella parte iniziale (dietro i rami che coprono la camera dalla vista dell'auto) l'auto in se non è riconoscibile, o meglio non si riesce a distinguere se si tratta di carabinieri, polizia o gdf, in questi casi le immagini le scarto quindi capisco perché non ho mai una predizione.
+
+- contesto circostante, migliorati gli FP giusto 2 frame sbagliati su di un furgone bianco come vdf
+
+- nel complesso, ha sicuramente bisogno di ulteriori esempi notturni che permettano di distinguere i 3 mezzi da lontano di notte
+
+-o-o-o-o-o-o
+
+vdf giorno:
+- destra -> sinistra, 
+qui di nuovo piccolo peggioramento iniziale, fatica a predire il pickup lontano, non appena si avvicina subito riprende bene. bench sostanzialmente identico a v1.2.
+
+- contesto circostante, ancora dubbi su quel benedetto pullman rosso. il contesto è il seguente: vdf passa di fianco al pullman rosso parcheggiato a destra mentre si trova a fine video in zona far e il modello lo scambia per un altro vdf. questa proprio mi sfugge anche avendo aggiunto molti esempi HN di pullman rossi ancora si palesa questo problema.
+
+- nel complesso, in questo bench, che per inciso non è malvagio, sembro un cane che si morde la coda, miglioro 1 cosa e peggioro un altra. sistemo l'altra e peggioro cio che avevo migliorato. Per il pickup credo che il problema sia quello di aver aggiunto esempi di auto rosse lontane, creando l'opposto di cio che ho osservato in ambulanza giorno.
+
+
+vdf notte
+- destra -> sinistra: NUOVO VIDEO BENCH!
+molto interessante questo nuovo bench, da lontano mentre si avvicina viene scambiato per ambulanza in maniera abbastanza sicura, all'avvicinarsi, ancora far, la predizione diventa corretta fino all'allontanarsi. Qui viene il bello… siccome alcuni camion vdf dietro hanno i lampeggianti blu a metà altezza del mezzo il modello confonde la vera altezza e alterna frame in cui il bounding è solo metà mezzo a lampeggianti bassi accesi e intero mezzo a lampeggianti bassi spenti e alti (quelli davanti) accesi, creando confusione anche con carabinieri, (mezzo basso rispetto a vdf). Confusione non aggressiva la principale predizione rimae vdf.
+
+- contesto, confusione su un auto grigia che segue il mezzo a fine video scambiata in maniera sicura con vdf (potrebbe essere dato dai lampeggianti che abbagliano di blu l'auto)
+
+nel complesso, interessante scoperta c'è da lavorare con vdf notte in certi contesti.
+
+vdf notte stress (ex bench vdf notte)
+- sostanzialmente migliorato, qualche incertezza appena il mezzo si palesa in video con ambulanza, ma poi il modello non lo confonde piu per il resto del video. Ancora qualche difficoltà a rappresentare il bounding dell'intero mezzo. Credo sia dato dai lampeggianti.
+
+-o-o-o-o-o-o
+
+note mie: alcune difficoltà che saltano all'occhio di notte sono i mezzi a lampeggianti spenti. di notte ho la maggioranza di contesti con lampeggianti on e quindi nei frame in cui sono spenti fa un po di fatica.
+"

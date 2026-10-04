@@ -1,0 +1,5 @@
+outs:
+- md5: 2993d1d3edd609123b41a1f0f3570c7b
+  size: 60577007
+  hash: md5
+  path: benchmark_vdf_notte.mp4

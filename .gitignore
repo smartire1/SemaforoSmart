@@ -1,0 +1,49 @@
+# Ambienti Python locali
+/.venv/
+/venv/
+/env/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+
+# Cache e file temporanei
+*.cache
+*.tmp
+*.temp
+.DS_Store
+._*
+__MACOSX/
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Configurazioni e credenziali locali
+.env
+.dvc/config.local
+credentials.json
+client_secret*.json
+token*.json
+
+# Output automatici non organizzati nella root
+/runs/
+/weights/
+/Ultralytics/
+
+# Archivi Roboflow ridondanti
+/data/datasets/**/*.zip
+
+# Output grafici YOLO rigenerabili
+/experiments/Train/**/*.png
+/experiments/Train/**/*.jpg
+/experiments/Test/**/*.png
+/experiments/Test/**/*.jpg
+
+# Predizioni video e label frame-by-frame rigenerabili
+/experiments/video_tests/**/labels/
+/experiments/video_tests/**/*.avi
+/experiments/video_tests/**/*.mp4
+/experiments/video_tests/**/*.mov
+/experiments/video_tests/**/*.mkv

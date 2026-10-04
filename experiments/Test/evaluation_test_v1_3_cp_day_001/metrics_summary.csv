@@ -1,0 +1,5 @@
+class,images,instances,precision,recall,map50,map50_95
+all,43,42,0.980,0.772,0.864,0.735
+Ambulanza,12,13,0.962,0.769,0.944,0.821
+Carabinieri,10,10,0.988,0.600,0.668,0.576
+VigiliDelFuoco,17,19,0.990,0.947,0.980,0.808

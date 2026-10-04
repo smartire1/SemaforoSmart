@@ -1,0 +1,7 @@
+# Snapshot compatibile con l'ambiente usato per la baseline v1.2.
+# Su macOS non usare i suffissi CUDA (+cu121) dell'ambiente Windows.
+ultralytics==8.4.142
+torch==2.5.1
+torchvision==0.20.1
+opencv-python==5.0.0.93
+numpy==2.4.3
